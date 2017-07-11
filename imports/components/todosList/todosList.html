@@ -5,7 +5,7 @@
     Hide completed tasks
   </label>
   <login-buttons></loggin-buttons>
-  <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)">
+  <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
     <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks" />
   </form>
 </header>

@@ -4,6 +4,7 @@
     <input type="checkbox" ng-model="$ctrl.hideCompleted" />
     Hide completed tasks
   </label>
+  <login-buttons></loggin-buttons>
   <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)">
     <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks" />
   </form>

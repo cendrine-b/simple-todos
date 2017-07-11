@@ -36,6 +36,10 @@ class TodosListCtrl {
             $ne: true
           }
         }).count();
+      },
+
+      currentUser() {
+        return Meteor.user();
       }
     })
   }

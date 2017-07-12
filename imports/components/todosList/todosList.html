@@ -1,29 +1,39 @@
 <div class="ui middle aligned center aligned grid">
   <div class="column">
+
     <h1 class="ui teal icon header">
-      <i class="circular unordered list icon"></i>
+      <i class="settings icon"></i>
       <div class="content">
-        Todo List
+        KeyCog® Todo List
         <div class="sub header">
           Number of task(s) left: {{$ctrl.incompleteCount}}.
-        </div>
-        <div class="ui checkbox hide-completed">
-          <input type="checkbox" ng-model="$ctrl.hideCompleted" />
-          <label>Hide completed tasks</label>
-        </div>
-        <div class="row">
-          <login-buttons class="ui black active button"></loggin-buttons>
         </div>
       </div>
     </h1>
 
-    <form class="ui form new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
-      <div class="ui big fluid input">
-        <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add a new task" />
-      </div>
-    </form>
-
-    <table class="ui table">
+    <table class="ui teal table">
+      <thead>
+        <tr>
+          <th class="left aligned" colspan="3">
+            <div class="ui slider checkbox hide-completed">
+              <input type="checkbox" ng-model="$ctrl.hideCompleted" />
+              <label>Hide completed tasks</label>
+            </div>
+          </th>
+          <th class="right aligned" colspan="2">
+            <login-buttons class="large ui teal button connect"></loggin-buttons>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="5">
+            <form class="ui form new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
+              <div class="ui big fluid input">
+                <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add a new task" />
+              </div>
+            </form>
+          </th>
+        </tr>
+      </thead>
       <tbody>
         <tr ng-repeat="task in $ctrl.tasks" ng-class="{'checked': task.checked, 'private': task.private}">
           <td class="center aligned">
@@ -32,10 +42,10 @@
               <label></label>
             </div>
           </td>
-          <td class="center aligned name"><strong>{{task.username}}</strong></td>
+          <td class="center aligned name">{{task.username}}</td>
           <td>{{task.text}}</td>
           <td class="center aligned">
-            <div class="large ui orange button toggle-private" ng-click="$ctrl.setPrivate(task)" ng-show="task.owner === $ctrl.currentUser._id">
+            <div class="large ui teal basic button toggle-private" ng-click="$ctrl.setPrivate(task)" ng-show="task.owner === $ctrl.currentUser._id">
               {{task.private == true ? "Private" : "Public"}}
             </div>
           </td>

@@ -1,24 +1,52 @@
-<header>
-  <h1>Todo List ({{$ctrl.incompleteCount}})</h1>
-  <label class="hide-completed">
-    <input type="checkbox" ng-model="$ctrl.hideCompleted" />
-    Hide completed tasks
-  </label>
-  <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
-    <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks" />
-  </form>
-  <login-buttons></loggin-buttons>
-</header>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h1 class="ui teal icon header">
+      <i class="circular unordered list icon"></i>
+      <div class="content">
+        Todo List
+        <div class="sub header">
+          Number of task(s) left: {{$ctrl.incompleteCount}}.
+        </div>
+        <div class="ui checkbox hide-completed">
+          <input type="checkbox" ng-model="$ctrl.hideCompleted" />
+          <label>Hide completed tasks</label>
+        </div>
+        <div class="row">
+          <login-buttons class="ui black active button"></loggin-buttons>
+        </div>
+      </div>
+    </h1>
 
-<ul>
-  <li ng-repeat="task in $ctrl.tasks" ng-class="{'checked': task.checked, 'private': task.private}">
-    <button class="delete" ng-click="$ctrl.removeTask(task)">&times;</button>
-    <input type="checkbox" ng-checked="task.checked" ng-click="$ctrl.setChecked(task)" class="toggle-checked" />
-    <span class="text">
-      <strong>{{task.username}}</strong> – {{task.text}}
-    </span>
-    <button class="toggle-private" ng-click="$ctrl.setPrivate(task)" ng-show="task.owner === $ctrl.currentUser._id">
-      {{task.private == true ? "Private" : "Public"}}
-    </button>
-  </li>
-</ul>
+    <form class="ui form new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
+      <div class="ui big fluid input">
+        <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add a new task" />
+      </div>
+    </form>
+
+    <table class="ui table">
+      <tbody>
+        <tr ng-repeat="task in $ctrl.tasks" ng-class="{'checked': task.checked, 'private': task.private}">
+          <td class="center aligned">
+            <div class="ui fitted checkbox">
+              <input type="checkbox" ng-checked="task.checked" ng-click="$ctrl.setChecked(task)" class="toggle-checked" />
+              <label></label>
+            </div>
+          </td>
+          <td class="center aligned name"><strong>{{task.username}}</strong></td>
+          <td>{{task.text}}</td>
+          <td class="center aligned">
+            <div class="large ui orange button toggle-private" ng-click="$ctrl.setPrivate(task)" ng-show="task.owner === $ctrl.currentUser._id">
+              {{task.private == true ? "Private" : "Public"}}
+            </div>
+          </td>
+          <td class="center aligned">
+            <div class="large ui red icon button delete" ng-click="$ctrl.removeTask(task)">
+              <i class="trash icon"></i>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

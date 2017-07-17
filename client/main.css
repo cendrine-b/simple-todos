@@ -11,6 +11,14 @@ body {
   color: teal;
 }
 
+#login-dropdown-list #login-buttons-password,
+#login-dropdown-list #login-buttons-open-change-password,
+#login-dropdown-list #login-buttons-logout,
+#login-dropdown-list #login-buttons-do-change-password {
+  background-color: teal;
+  border-color: teal;
+}
+
 .name {
   font-size: 1.2em;
   font-weight: 600;
